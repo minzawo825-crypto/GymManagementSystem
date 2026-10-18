@@ -1,0 +1,104 @@
+/* Container Layout */
+.page-container {
+  padding: 20px 40px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+.breadcrumb span {
+  font-weight: 600;
+  color: #333;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  color: #4a4a4a;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+/* Card Box */
+.card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.card-header {
+  background-color: #f4f4f4;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.card-body {
+  padding: 0;
+  overflow-x: auto;
+}
+
+/* Table Styling */
+.member-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: #555;
+}
+
+.member-table th {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  padding: 12px 10px;
+  border: 1px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.member-table td {
+  padding: 12px 10px;
+  border: 1px solid #e7e7e7;
+  white-space: nowrap;
+}
+
+.member-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Remove Button Styling (Red Color) */
+.btn-remove {
+  background: none;
+  border: none;
+  color: #e74c3c; /* Red text/icon color */
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.btn-remove:hover {
+  background-color: #fde8e8; /* Hover ခါ အနီနုရောင် highlight */
+}
+
+.loading-spinner, .no-data {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+}

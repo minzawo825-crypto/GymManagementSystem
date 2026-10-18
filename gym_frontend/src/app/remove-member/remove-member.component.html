@@ -1,0 +1,64 @@
+<div class="page-container">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <i class="fa-solid fa-house"></i> Home &gt; <span>Remove Members</span>
+  </div>
+
+  <!-- Page Title -->
+  <h1 class="page-title">Remove Members</h1>
+
+  <!-- Card Layout -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fa-solid fa-th"></i> Member table
+    </div>
+
+    <div class="card-body">
+      <div *ngIf="isLoading" class="loading-spinner">Loading members...</div>
+
+      <table *ngIf="!isLoading" class="member-table">
+       <thead>
+  <tr>
+    <th>#</th>
+    <th>Fullname</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Gender</th>
+    <th>D.O.R</th>
+    <th>Plan</th>
+    <th>Contact Number</th>
+    <th>Address</th>
+    <th>Choosen Service</th>
+    <th>Amount</th>
+    <th>Action</th> <!-- Added missing header -->
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let member of members; let i = index">
+    <td class="text-center">{{ i + 1 }}</td>
+    <td>{{ member.t1 }}</td>
+    <td>&#64;{{ member.t2 }}</td>
+    <td>{{ member.t3 }}</td>
+    <td>{{ member.t4 }}</td>
+    <td>{{ member.t5 }}</td>
+    <td>{{ member.t6 }}</td>
+    <td>{{ member.t7 }}</td>
+    <td>{{ member.t8 }}</td>
+    <td>{{ member.t9 }}</td>
+    <td class="text-center">${{ member.t10 }}</td>
+    <td class="text-center">
+      <button class="btn-remove" (click)="remove(member.syskey)">
+        <i class="fa-solid fa-trash"></i> Remove
+      </button>
+    </td>
+  </tr>
+
+  <tr *ngIf="members.length === 0">
+    <td colspan="12" class="no-data">No members found.</td> <!-- Updated colspan -->
+  </tr>
+      </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>

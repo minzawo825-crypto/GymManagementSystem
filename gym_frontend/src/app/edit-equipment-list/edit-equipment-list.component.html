@@ -1,0 +1,63 @@
+<div class="page-container">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <i class="fa-solid fa-house"></i> Home &gt; <span>Equipment List</span>
+  </div>
+
+  <!-- Page Title -->
+  <h1 class="page-title">Equipment List</h1>
+
+  <!-- Card Layout -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fa-solid fa-th"></i> Equipment table
+    </div>
+
+    <div class="card-body">
+      <div *ngIf="isLoading" class="loading-spinner">Loading equipment...</div>
+
+      <table *ngIf="!isLoading" class="member-table">
+       <thead>
+  <tr>
+    <th>#</th>
+    <th>Equipment</th>
+    <th>Description</th>
+    <th>Date of purchase</th>
+    <th>Quantity</th>
+    <th>Vendor</th>
+    <th>Address</th>
+    <th>Contact Number</th>
+    <th>Cost per price</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let equipment of equipments; let i = index">
+    <td class="text-center">{{ i + 1 }}</td>
+    <td>{{ equipment.t1 }}</td>
+    <td>&#64;{{ equipment.t2 }}</td>
+    <td>{{ equipment.t3 }}</td>
+    <td>{{ equipment.t4 }}</td>
+    <td>{{ equipment.t5 }}</td>
+    <td>{{ equipment.t6 }}</td>
+    <td>{{ equipment.t7 }}</td>
+    <td>{{ equipment.t8 }}</td>
+    
+    <td class="text-center">
+              <button class="btn-edit" (click)="onEdit(equipment)">
+                <i class="fa-regular fa-pen-to-square"></i> Edit
+              </button>
+              <button class="btn-remove" (click)="remove(equipments)">
+        <i class="fa-solid fa-trash"></i> Remove
+      </button>
+    </td>
+ </tr>
+  <tr *ngIf="equipments.length === 0">
+    <td colspan="12" class="no-data">No equipment found.</td> <!-- Updated colspan -->
+  </tr>
+      </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="form-container">
+  <h2>Member Entry Form</h2>
+  
+  <form [formGroup]="memberForm" (ngSubmit)="onSubmit()" class="entry-grid">
+    
+    <!-- Left Column: Personal Info -->
+    <div class="section form-column-side">
+      <div class="section-header-bar">
+        <i class="fa-solid fa-bars"></i> Personal-info
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Full Name :</label>
+        <div class="form-input-block">
+          <input formControlName="t1" placeholder="Fullname" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Username :</label>
+        <div class="form-input-block">
+          <input formControlName="t2" placeholder="Username" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Password :</label>
+        <div class="form-input-block">
+          <input type="password" formControlName="t3" placeholder="**********" class="form-control">
+          <small class="help-text">Note: The given information will create an account for this particular member</small>
+        </div>
+      </div>
+
+      <!-- Dynamic Gender Dropdown -->
+      <div class="form-row">
+        <label class="form-label">Gender :</label>
+        <div class="form-input-block">
+          <select formControlName="t4" class="form-control">
+            <option value="" disabled selected>Select Gender</option>
+            <option *ngFor="let item of dropdowns?.genders" [value]="item.syskey">
+              {{ item.t1 }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">D.O.R :</label>
+        <div class="form-input-block">
+          <input type="date" formControlName="t5" class="form-control">
+          <small class="help-text">Date of registration</small>
+        </div>
+      </div>
+
+      <!-- Dynamic Plan Dropdown -->
+      <div class="form-row">
+        <label class="form-label">Plans :</label>
+        <div class="form-input-block">
+          <select formControlName="t6" class="form-control">
+            <option value="" disabled selected>Select Plan</option>
+            <option *ngFor="let item of dropdowns?.plans" [value]="item.syskey">
+              {{ item.t1 }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Contact & Service -->
+    <div class="section form-column-side">
+      <div class="section-header-bar">
+        <i class="fa-solid fa-bars"></i> Contact Details
+      </div>
+      
+      <div class="form-row">
+        <label class="form-label">Contact Number :</label>
+        <div class="form-input-block">
+          <input formControlName="t7" placeholder="Contact Number" class="form-control">
+          <small class="help-text">(999) 999-9999</small>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Address :</label>
+        <div class="form-input-block">
+          <input formControlName="t8" placeholder="Address" class="form-control">
+        </div>
+      </div>
+      
+      <div class="section-header-bar">
+        <i class="fa-solid fa-bars"></i> Service Details
+      </div>
+
+      <!-- Dynamic Service Dropdown -->
+      <div class="form-row">
+        <label class="form-label">Services :</label>
+        <div class="form-input-block">
+          <select formControlName="t9" class="form-control">
+            <option value="" disabled selected>Select Service</option>
+            <option *ngFor="let item of dropdowns?.services" [value]="item.syskey">
+              {{ item.t1 }} - {{ item.t2 | currency }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Total Amount Input -->
+      <div class="form-row">
+        <label class="form-label">Total Amount :</label>
+        <div class="input-wrapper">
+        <div class="form-input-block amount-wrapper">
+          <span class="currency-addon">$</span>
+          <input type="number" formControlName="t10" class="form-control" readonly>
+        </div>
+      </div>
+      </div>
+      <div class="form-row btn-row" style="margin-top: 20px;">
+        <div class="form-label"></div>
+        <div class="form-input-block">
+        <button type="submit" class="btn-submit" [ngClass]="isEditMode ? 'btn-primary' : 'btn-success'">
+       {{ isEditMode ? 'Update Member Details' : 'Submit Member Details' }}
+          </button>
+        </div>
+      </div>
+
+    </div> <!-- Right Column End -->
+
+  </form>
+</div>

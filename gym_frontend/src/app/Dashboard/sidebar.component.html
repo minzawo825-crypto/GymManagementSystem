@@ -1,0 +1,239 @@
+<!-- <div class="sidebar-container">
+  <div class="brand-section">
+    <div class="logo-icon">
+      <i class="fa-solid fa-dumbbell"></i>
+    </div>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    </head>
+    <h2>GYM SYSTEM</h2>
+  </div>
+
+  <div class="user-welcome">
+    <span>Welcome Admin</span>
+    <button class="btn-logout" title="Logout">
+      <i class="fa-solid fa-power-off"></i>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul>
+      <li [class.active]="activeMenu === 'dashboard'" (click)="setActiveMenu('dashboard')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-gauge-high icon"></i>
+          <span class="menu-text">Dashboard</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'members'" (click)="setActiveMenu('members')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-users icon"></i>
+          <span class="menu-text">Manage Members</span>
+          <span class="badge badge-orange">17</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'equipment'" (click)="setActiveMenu('equipment')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-dumbbell icon"></i>
+          <span class="menu-text">Gym Equipment</span>
+          <span class="badge badge-red">6</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'attendance'" (click)="setActiveMenu('attendance')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-calendar-days icon"></i>
+          <span class="menu-text">Attendance</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'progress'" (click)="setActiveMenu('progress')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-chart-line icon"></i>
+          <span class="menu-text">Manage Customer Progress</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'status'" (click)="setActiveMenu('status')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-eye icon"></i>
+          <span class="menu-text">Member's Status</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'payments'" (click)="setActiveMenu('payments')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-credit-card icon"></i>
+          <span class="menu-text">Payments</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'announcement'" (click)="setActiveMenu('announcement')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-bullhorn icon"></i>
+          <span class="menu-text">Announcement</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'staff'" (click)="setActiveMenu('staff')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-user-tie icon"></i>
+          <span class="menu-text">Staff Management</span>
+        </a>
+      </li>
+
+      <li [class.active]="activeMenu === 'reports'" (click)="setActiveMenu('reports')">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-file-invoice icon"></i>
+          <span class="menu-text">Reports</span>
+        </a>
+      </li>
+    </ul>
+   
+  </nav>
+</div> -->
+
+<div class="main-layout" style="display: flex; width: 100%; min-height: 100vh;">
+  
+  <div class="sidebar-container">
+    <div class="brand-section">
+      <div class="logo-icon">
+        <i class="fa-solid fa-dumbbell"></i>
+      </div>
+      <h2>GYM SYSTEM</h2>
+    </div>
+
+    <!-- <div class="user-welcome">
+      <span>Welcome Admin</span>
+      <button class="btn-logout" title="Logout">
+        <i class="fa-solid fa-power-off"></i>
+      </button>
+    </div> -->
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li
+          routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/Dashboard/Dashboard_home">
+    <i class="fa-solid fa-gauge-high icon"></i>
+    <span class="menu-text">Dashboard</span>
+  </a>
+</li>
+
+        <!-- Replace your old Manage Members <li> block with this structure -->
+<li [class.dropdown-active]="isManageMembersOpen()">
+  <a href="#" (click)="toggleManageMembers($event)">
+    <i class="fa-solid fa-users icon"></i>
+    <span class="menu-text">Manage Members</span>
+    <span class="badge badge-orange">17</span>
+    <!-- Small arrow indicator that flips when active -->
+    <i class="fa-solid fa-chevron-down arrow-icon" [class.rotated]="isManageMembersOpen()"></i>
+  </a>
+
+  <!-- Angular 17 Control Flow Submenu Dropdown -->
+  @if (isManageMembersOpen()) {
+    <ul class="submenu">
+      <li routerLinkActive="active">
+        <a routerLink="/Dashboard/members/list">
+          <i class="fa-solid fa-arrow-right submenu-arrow"></i>➔ List All Members
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/Dashboard/members/entry">
+          <i class="fa-solid fa-arrow-right submenu-arrow"></i>➔ Member Entry Form
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/Dashboard/members/remove">
+          <i class="fa-solid fa-arrow-right submenu-arrow"></i>➔ Remove Member
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/Dashboard/members/update">
+          <i class="fa-solid fa-arrow-right submenu-arrow"></i>➔ Update Member Details
+        </a>
+      </li>
+    </ul>
+  }
+</li>
+
+        
+        
+<li [class.dropdown-active]="isGymEquipmentOpen()" 
+    [class.hide-blue-hover]="isHoveringSubmenu() || isSubmenuActive()">
+  
+  <a href="#" (click)="toggleGymEquipment($event)">
+    <i class="fa-solid fa-dumbbell icon"></i>
+    <span class="menu-text">Gym Equipment</span>
+    <span class="badge badge-orange">12</span>
+    <i class="fa-solid fa-chevron-down arrow-icon" [class.rotated]="isGymEquipmentOpen()"></i>
+  </a>
+
+  @if (isGymEquipmentOpen()) {
+   
+    <ul class="submenu" 
+        (mouseenter)="isHoveringSubmenu.set(true)" 
+        (mouseleave)="isHoveringSubmenu.set(false)">
+      <li routerLinkActive="active"><a routerLink="/Dashboard/equipment/list">➔ List All Equipment</a></li>
+      <li routerLinkActive="active"><a routerLink="/Dashboard/equipment/add">➔ Add Gym Equipment</a></li>
+      
+    </ul>
+  }
+</li>
+        <li routerLinkActive="active">
+          <a routerLink="/Dashboard/attendance">
+            <i class="fa-solid fa-calendar-days icon"></i>
+            <span class="menu-text">Attendance</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/Dashboard/progress">
+            <i class="fa-solid fa-chart-line icon"></i>
+            <span class="menu-text">Manage Customer Progress</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/Dashboard/status">
+            <i class="fa-solid fa-eye icon"></i>
+            <span class="menu-text">Member's Status</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/Dashboard/payments">
+            <i class="fa-solid fa-credit-card icon"></i>
+            <span class="menu-text">Payments</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/Dashboard/announcement">
+            <i class="fa-solid fa-bullhorn icon"></i>
+            <span class="menu-text">Announcement</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/Dashboard/staff">
+            <i class="fa-solid fa-user-tie icon"></i>
+            <span class="menu-text">Staff Management</span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/Dashboard/reports">
+            <i class="fa-solid fa-file-invoice icon"></i>
+            <span class="menu-text">Reports</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content-area" style="flex: 1; background-color: #ecf0f5; padding: 20px; overflow-y: auto; height: 100vh;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

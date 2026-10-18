@@ -1,0 +1,213 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar-container {
+  width: 260px;
+  height: 100vh;
+  background-color: #222d32; /* Screenshot ထဲက Dark Slate Gray အရောင် */
+  color: #b8c7ce;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* Brand Header */
+.brand-section {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #1a2226; /* ပိုရင့်သော header အရောင် */
+  border-bottom: 1px solid #111;
+}
+
+.logo-icon {
+  font-size: 20px;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.brand-section h2 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* User Welcome Section */
+.user-welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #1a2226;
+  font-size: 13px;
+  color: #fff;
+  border-bottom: 1px solid #2c3b41;
+}
+
+.btn-logout {
+  background: none;
+  border: none;
+  color: #db4437;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.btn-logout:hover {
+  color: #ff6b6b;
+}
+
+/* Navigation List */
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav ul li {
+  position: relative;
+  border-left: 3px solid transparent;
+  transition: all 0.15s ease-in-out;
+}
+
+.sidebar-nav ul li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  color: #b8c7ce;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sidebar-nav ul li a .icon {
+  width: 25px;
+  font-size: 15px;
+  margin-right: 8px;
+}
+
+.sidebar-nav ul li a .menu-text {
+  flex: 1;
+}
+
+/* Hover Effect */
+.sidebar-nav ul li:hover > a:not(.submenu a) {
+  background-color: rgb(90, 183, 236) !important; /* သင့် CSS ထဲက အပြာရောင် */
+  color: #fff !important;
+}
+
+/* ၂။ Submenu (ဥပမာ- Remove Gym Equipment) ပေါ်ကို mouse ရောက်သွားတာနဲ့ */
+/* အပေါ်က မိဘ `li` ရဲ့ အပြာရောင် နောက်ခံကို လုံးဝ ပျောက်သွားအောင် ပိတ်ပစ်လိုက်တာ ဖြစ်ပါတယ် */
+.sidebar-nav ul li:has(.submenu:hover) {
+  background-color: transparent !important;
+}
+.sidebar-nav ul li:has(.submenu:hover) > a {
+  color: #b8c7ce !important; /* ပုံမှန် မီးခိုးရောင် စာသားအတိုင်း ပြန်ပြောင်းရန် */
+}
+
+/* ၃။ Submenu တစ်ခုခုကို နှိပ်ထားလို့ (Active ဖြစ်နေလို့) မျက်နှာပြင်ထဲ ရောက်နေရင်လည်း */
+/* အပေါ်က ပင်မစာသားမှာ အပြာရောင် လုံးဝ မပေါ်စေဘဲ ပုံမှန်အတိုင်း ပျောက်နေစေရန် */
+.sidebar-nav ul li:has(.submenu li.active) {
+  background-color: transparent !important;
+}
+.sidebar-nav ul li:has(.submenu li.active) > a {
+  color: #b8c7ce !important;
+}
+
+/* Badges (Notification Counters) */
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.badge-orange {
+  background-color: #f39c12; /* Manage Members Badge */
+}
+
+.badge-red {
+  background-color: #dd4b39; /* Gym Equipment Badge */
+}
+
+/* Scrollbar ကလေးအား သေသပ်အောင် ပြင်ဆင်ခြင်း */
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background-color: #1a2226;
+}
+/* Arrow rotation mechanics */
+.arrow-icon {
+  margin-left: auto; /* Pushes the arrow icon to the far right side */
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+.arrow-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Submenu container spacing */
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #2c3b41; /* Matches the dark background theme */
+}
+
+/* Submenu Individual Links styling */
+.submenu li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px 10px 30px; /* Extra left padding to indent sub-items */
+  color: #b8c7ce;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.submenu li a:hover {
+  background-color: #1fd4a7;
+  color: #fff;
+}
+
+/* Inline small submenu indicators */
+.submenu-arrow {
+  font-size: 11px;
+  margin-right: 8px;
+  color: #8aa4af;
+}
+
+/* Teal Active class styling (Matching the screenshot look) */
+.submenu li.active a {
+  background-color: #14a375 !important;
+  color: #ffffff !important;
+}
+.submenu li.active a .submenu-arrow {
+  color: #ffffff;
+}
+
+.sidebar-nav ul li.active > a {
+  background-color: #5dade2 !important;
+  color: #fff !important;
+}
+.sidebar-nav ul:has(li:hover) li.active > a {
+  background-color: transparent !important;
+  color: #b8c7ce !important; /* ပုံမှန် မီးခိုးရောင် စာသား */
+}
+
+/* သို့သော်... mouse က active ဖြစ်နေတဲ့ li ပေါ်မှာပဲ တိုက်ရိုက်ရှိနေရင်တော့ 
+   သူ့အရောင်အတိုင်း ပြန်လင်းနေစေမယ် */
+.sidebar-nav ul li.active:hover > a {
+  background-color: #5dade2 !important; /* သင့် Dashboard Active အရောင် */
+  color: #fff !important;
+}

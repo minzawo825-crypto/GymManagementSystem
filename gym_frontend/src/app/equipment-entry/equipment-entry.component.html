@@ -1,0 +1,92 @@
+<div class="form-container">
+  <h2>Equipment Entry Form</h2>
+  
+  <form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()" class="entry-grid">
+    
+    <!-- Left Column: Personal Info -->
+    <div class="section form-column-side">
+      <div class="section-header-bar">
+        <i class="fa-solid fa-bars"></i> Equipment-info
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Equipment:</label>
+        <div class="form-input-block">
+          <input formControlName="t1" placeholder="Equipment Name" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Description :</label>
+        <div class="form-input-block">
+          <input formControlName="t2" placeholder="Description" class="form-control">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Date of Purchase :</label>
+        <div class="form-input-block">
+          <input type="date" formControlName="t3" class="form-control">
+          
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Quantity :</label>
+        <div class="form-input-block">
+          <input formControlName="t4" placeholder="Quantity" class="form-control">
+        </div>
+      </div>
+    </div>
+
+      
+      
+    <!-- Right Column: Contact & Service -->
+    <div class="section form-column-side">
+      <div class="section-header-bar">
+        <i class="fa-solid fa-bars"></i> Other Details
+      </div>
+      <div class="form-row">
+        <label class="form-label">Vendor :</label>
+        <div class="form-input-block">
+          <input formControlName="t5" placeholder="Vendor" class="form-control">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Address :</label>
+        <div class="form-input-block">
+          <input formControlName="t6" placeholder="Vendor Address" class="form-control">
+        </div>
+      </div>
+      
+      
+      <div class="form-row">
+        <label class="form-label">Contact Number :</label>
+        <div class="form-input-block">
+          <input formControlName="t7" placeholder="Contact Number" class="form-control">
+          
+        </div>
+      </div>
+   
+      <!-- Total Amount Input -->
+      <div class="form-row">
+    <label class="form-label">Cost per item :</label>
+    <div class="input-wrapper">
+      <div class="amount-wrapper">
+        <span class="currency-addon">$</span>
+        <input type="number" formControlName="t8" class="form-control ">
+      </div>
+    </div>
+    </div>
+      <div class="form-row btn-row" style="margin-top: 20px;">
+        <div class="form-label"></div>
+        <div class="form-input-block">
+          <button type="submit" class="btn-submit" [disabled]="isSubmitting || equipmentForm.invalid">
+            {{ isSubmitting ? 'Submitting...' : 'Submit Member Details' }}
+          </button>
+        </div>
+      </div>
+
+    </div> <!-- Right Column End -->
+
+</form>
+</div>

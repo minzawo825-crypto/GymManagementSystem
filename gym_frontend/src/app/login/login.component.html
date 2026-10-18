@@ -1,0 +1,76 @@
+
+<div class="login-wrapper">
+  <div class="login-box">
+    <head>
+        <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+</head>
+    <div class="logo">
+      
+      <h2>🏋️GYM SYSTEM</h2>
+    </div>
+
+    @if (errorMessage) {
+      <div class="alert-error">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <!-- Username -->
+      <div class="input-group">
+        <div class="icon-box">
+          <i class="fa fa-user"></i>
+        </div>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+        />
+      </div>
+
+      @if (loginForm.get('username')?.touched &&
+      loginForm.get('username')?.errors?.['required']) {
+      <small class="text-danger">
+        Required Username
+      </small>
+      }
+
+      <!-- Password -->
+      <div class="input-group">
+        <div class="icon-box password">
+          <i class="fa fa-lock"></i>
+        </div>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+        />
+      </div>
+
+      @if (loginForm.get('password')?.touched &&
+      loginForm.get('password')?.errors?.['required']) {
+      <small class="text-danger">
+        Required Password
+      </small>
+      }
+
+      @if (loginForm.get('password')?.touched &&
+      loginForm.get('password')?.errors?.['minlength']) {
+      <small class="text-danger">
+        Password is add least 6 characters
+      </small>
+      }
+
+      <button type="submit" class="login-btn">
+        Admin Login
+      </button>
+
+    </form>
+  </div>
+</div>
+
+  
